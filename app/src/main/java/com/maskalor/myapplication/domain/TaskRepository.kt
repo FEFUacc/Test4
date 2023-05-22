@@ -6,5 +6,5 @@ import com.maskalor.myapplication.domain.models.TaskList
 interface TaskRepository {
     suspend fun addTask(task: Task)
     suspend fun deleteTask(task: Task)
-    suspend fun getTasksFromTaskList(taskList: TaskList): List<Task>
+    suspend fun getTasksFromTaskList(id: Int): List<Task>
 }

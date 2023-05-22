@@ -1,10 +1,12 @@
 package com.maskalor.myapplication.data.room.dao
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.maskalor.myapplication.data.room.entity.TaskEntity
 
+@Dao
 abstract class TaskDao {
     @Insert
     abstract suspend fun addTask(task: TaskEntity)
