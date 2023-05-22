@@ -1,0 +1,18 @@
+package com.maskalor.myapplication.data.room.dao
+
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import com.maskalor.myapplication.data.room.entity.TaskEntity
+
+abstract class TaskDao {
+    @Insert
+    abstract suspend fun addTask(task: TaskEntity)
+
+    @Delete
+    abstract suspend fun deleteTask(task: TaskEntity)
+
+    @Query("SELECT * FROM task WHERE taskListId = :taskListId")
+    abstract suspend fun getTasksFromTaskList(taskListId: Int): List<TaskEntity>
+
+}

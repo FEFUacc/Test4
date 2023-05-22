@@ -1,6 +1,7 @@
-package com.maskalor.myapplication.data.room
+package com.maskalor.myapplication.data.room.dao
 
 import androidx.room.*
+import com.maskalor.myapplication.data.room.entity.TaskListEntity
 
 @Dao
 abstract class TaskListDao {

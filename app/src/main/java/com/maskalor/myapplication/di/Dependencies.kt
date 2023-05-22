@@ -3,6 +3,7 @@ package com.maskalor.myapplication.di
 import android.content.Context
 import androidx.room.Room
 import com.maskalor.myapplication.data.TaskListRepositoryImpl
+import com.maskalor.myapplication.data.TaskRepositoryImpl
 import com.maskalor.myapplication.data.room.MyDb
 
 object Dependencies {
@@ -19,5 +20,9 @@ object Dependencies {
 
     val taskListRepository by lazy {
         TaskListRepositoryImpl(db.taskListDao())
+    }
+
+    val taskRepository by lazy {
+        TaskRepositoryImpl(db.taskDao())
     }
 }
