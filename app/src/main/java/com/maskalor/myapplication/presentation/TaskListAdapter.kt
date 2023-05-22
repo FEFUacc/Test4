@@ -28,7 +28,7 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.MyViewHolder>(MyDiffUt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LinearLayout.inflate(parent.context, R.layout.task_layout, parent.)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.task_layout, parent)
         return MyViewHolder(view)
     }
 
