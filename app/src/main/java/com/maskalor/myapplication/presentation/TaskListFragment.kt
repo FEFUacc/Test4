@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.maskalor.myapplication.R
 import com.maskalor.myapplication.databinding.FragmentTaskListBinding
 
@@ -40,6 +42,24 @@ class TaskListFragment(private val taskListId: Int) : Fragment() {
         viewModel.list.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+
+        val callback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                adapter.notifyItemMoved(viewHolder.adapterPosition, target.adapterPosition)
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                TODO("Not yet implemented")
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(callback)
+            .attachToRecyclerView(binding.rv)
 
         viewModel.getTasksFromTaskList(taskListId)
     }
